@@ -21,7 +21,7 @@ class CounterTest {
             .sequentialSpecification(CounterSequential::class.java)
             .check(this::class.java)
     } catch (t: Throwable) {
-        uploadWrongSolutionToS3("model-checking")
+        log("model-checking")
         throw t
     }
 
@@ -35,7 +35,7 @@ class CounterTest {
             .sequentialSpecification(CounterSequential::class.java)
             .check(this::class.java)
     } catch (t: Throwable) {
-        uploadWrongSolutionToS3("stress")
+        log("stress")
         throw t
     }
 }
@@ -48,6 +48,6 @@ class CounterSequential : VerifierState() {
     override fun extractState() = a
 }
 
-private fun uploadWrongSolutionToS3(strategy: String) {
+private fun log(strategy: String) {
     System.err.println("Failed: $strategy")
 }

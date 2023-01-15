@@ -36,8 +36,6 @@ class AnotherCounterTest {
         }
         val expected = countThreads * countOperations
         val actual = counter.getAndIncrement()
-        println("Expected: $expected")
-        println("Actual: $actual")
         Assert.assertEquals(expected, actual)
     }
 }
